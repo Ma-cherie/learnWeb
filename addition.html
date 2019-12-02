@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴效果</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    .wrapper{
+        width: 600px;
+        margin: 20px auto;
+    }
+    .txt{
+        display: none;
+    }
+    .txt:target{
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <ul class="wrapper">
+        <li class="item">
+            <a href="#txt1" class="btn">news1</a>
+            <div class="txt" id="txt1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit dolor temporibus nostrum quibusdam dicta maiores tempora voluptatem, mollitia laboriosam fugit saepe, expedita magni ipsa facere autem sequi adipisci omnis ut?</div>
+        </li>
+        <li class="item">
+            <a href="#txt2" class="btn">news2</a>
+            <div class="txt" id="txt2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, quos assumenda? Necessitatibus debitis perspiciatis ex perferendis pariatur provident? Tempora harum alias, quaerat omnis exercitationem adipisci dolorum ipsa reprehenderit optio consequuntur.</div>
+        </li>
+        <li class="item">
+            <a href="#txt3" class="btn">news3</a>
+            <div class="txt" id="txt3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe provident vel hic repellat delectus suscipit numquam maxime excepturi, ad sequi. Officiis aspernatur omnis eligendi delectus est, recusandae eos ea ipsa!</div>
+        </li>
+    </ul>
+</body>
+</html>
