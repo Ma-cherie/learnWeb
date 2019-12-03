@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The sun</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #000;
+        
+    }
+    .sun{
+        position: absolute;
+        left: 25%;
+        top: calc(50% - 150px);
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        box-shadow: inset 0px 0px 50px #fff,
+                    inset 10px 0px 80px #f0f,
+                    inset -10px 0px 80px #0ff,
+                    inset 10px 0px 100px #f0f,
+                    inset -10px 0px 100px #0ff,
+                    0px 0px 50px #fff,
+                    -10px 0px 50px #f0f,
+                    10px 0px 50px #0ff
+
+    }
+    .sun2{
+    position: absolute;
+    left: 60%;
+    top: calc(50% - 25px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 0px 100px 50px #fff,
+                0px 0px 250px 125px #ff0;
+    }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+
+    <div class="sun2"></div>
+</body>
+</html>
