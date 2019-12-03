@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tabs选项卡效果</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    .wrapper{
+        width: 700px;
+        margin: 20px auto;
+        border: 1px solid #999;
+        padding: 10px 20px;
+    }
+    .head{
+        display: block;
+        overflow: hidden;
+        /* height: 50px; */
+        margin: 10px 0px;
+    }
+    .head li{
+        float: left;
+        margin: 0px 2px;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        /* background-color: #337ab7;*/
+    }
+    .head li:hover{
+        background-color: #eee;
+    }
+    .head li a{
+        /* color: #fff; */
+        color: #337ab7;
+    }
+    .head li a:active{
+        color: #fff;
+    }
+    .txt{
+        display: none;
+    }
+    .txt:target{
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="head">
+            <li><a href="#txt1">Home</a></li>
+            <li><a href="#txt2">Profile</a></li>
+            <li><a href="#txt3">Messages</a></li>
+        </ul>
+        <div class="txt" id="txt1">1：Lorem ipsum dolor sit amet consectetur adipisicing elit. A et porro aliquid, quis expedita, odit iure deserunt consequuntur nihil reiciendis voluptatum fugit accusamus, nostrum cumque illum tempore quam voluptatibus molestiae?</div>
+        <div class="txt" id="txt2">2：Atque sequi libero maiores voluptate dolorem facere adipisci? Nobis nesciunt asperiores eaque ipsam consectetur modi! Eos ducimus quos quasi, fugit, impedit omnis perspiciatis blanditiis reiciendis pariatur quibusdam facere quod molestias!</div>
+        <div class="txt" id="txt3">3：Mollitia ab maiores dicta ex ad fugit repellat, rerum illum consequatur eos perspiciatis iure nemo deleniti nisi ipsam omnis unde quas, adipisci similique! Distinctio facilis a deserunt optio, nobis cum.</div>
+    </div>
+</body>
+</html>
