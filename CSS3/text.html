@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>text</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    .fudiao,.loukong{
+        color: #ddd;
+        font-size: 100px;
+        width: 500px;
+        height: 200px;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .fudiao{
+        text-shadow: 1px 1px  #000,
+                    -1px -1px  #fff;
+    }
+    .loukong{
+        text-shadow: -1px -1px #000,
+                    1px 1px 5px #fff;
+    }
+    .wrapper{
+        width: 300px;
+        height: 500px;
+        border: 1px solid red;
+        /* overflow: hidden; */
+        margin: 20px auto;
+        position: relative;
+    }
+    .content{
+        width: 300px;
+        height: 500px; 
+        column-width: 300px;
+        column-gap: 20px;
+        transition: all 0.5s;
+        transform: translateX(0px);
+    }
+    /* .wrapper:hover .content{
+        transform: translateX(-320px);
+    } */
+    .up,.down{
+        position: absolute;
+        bottom: 0;
+    }
+    .up{
+        left: 0;
+    }
+    .down{
+        right: 0;
+    }
+    </style>
+</head>
+<body>
+    <!-- <div class="fudiao">浮雕</div>
+    <div class="loukong">镂空</div> -->
+
+    <div class="wrapper">
+        <div class="content">
+            12月3日，华为心声社区发布任正非11月26日接受CNN采访纪要。
+            采访中，CNN记者Kristie Lu Stout提问：如果特朗普总统签署了《香港人权与民主法案》，把它变成法律，那它就会影响中美贸易战，继而影响华为的未来，对吗？
+            任正非：不会，因为我们已经不做美国市场，怎么会有影响呢？我们也不打算去为美国人民服务，因为美国人民不需要我们了。
+            Kristie Lu Stout：那华为是不是已经完全放弃美国市场了？
+            任正非：现在也不能说完全放弃美国市场，我们也要争取美国宪法所赋予的权利。但是美国人民拒绝让我们服务，比如AT&T、Verizon等运营商不采购我们的产品，尽管我们有很友善的心，那也只能不给美国人民提供服务。美国是一个自由社会，应本着开放的精神容纳世界各种力量，但是美国正在背弃这种精神，那它将来是不是还能领导世界呢？
+            以下为文章全文：
+            1、Kristie Lu
+            Stout，CNN驻香港主播、记者：任先生，感谢您邀请我们到访深圳华为总部。我非常期待今天和您的对话。我的第一个问题是，中国最近刚刚推出了全球最大规模的5G网络，华为在其中扮演了非常重要的角色。但是消费者对此的反应却有点不温不火，您觉得要做些什么才能改变这一局面？
+            任正非：第一，网络才刚刚建设，还不够完善，消费者还不能完全感受到5G给他们带来的体验。预计明年中国市场销售的5G手机将达到2亿台，估计大家的感受就会很充分了，特别是1000多元人民币的5G手机做出来的时候，个人消费会有一些体验。
+            第二，5G是对工业自动化、对人工智能的促进，这需要一个相当长的过程。人工智能刚刚才兴起，它需要低时延、大带宽、大流量。它深度学习，建立模型，这些都需要一个成长过程，所以不会很快就热销。
+            1、Kristie Lu
+            Stout，CNN驻香港主播、记者：任先生，感谢您邀请我们到访深圳华为总部。我非常期待今天和您的对话。我的第一个问题是，中国最近刚刚推出了全球最大规模的5G网络，华为在其中扮演了非常重要的角色。但是消费者对此的反应却有点不温不火，您觉得要做些什么才能改变这一局面？
+            任正非：第一，网络才刚刚建设，还不够完善，消费者还不能完全感受到5G给他们带来的体验。预计明年中国市场销售的5G手机将达到2亿台，估计大家的感受就会很充分了，特别是1000多元人民币的5G手机做出来的时候，个人消费会有一些体验。
+            第二，5G是对工业自动化、对人工智能的促进，这需要一个相当长的过程。人工智能刚刚才兴起，它需要低时延、大带宽、大流量。它深度学习，建立模型，这些都需要一个成长过程，所以不会很快就热销。
+            1、Kristie Lu
+            Stout，CNN驻香港主播、记者：任先生，感谢您邀请我们到访深圳华为总部。我非常期待今天和您的对话。我的第一个问题是，中国最近刚刚推出了全球最大规模的5G网络，华为在其中扮演了非常重要的角色。但是消费者对此的反应却有点不温不火，您觉得要做些什么才能改变这一局面？
+            任正非：第一，网络才刚刚建设，还不够完善，消费者还不能完全感受到5G给他们带来的体验。预计明年中国市场销售的5G手机将达到2亿台，估计大家的感受就会很充分了，特别是1000多元人民币的5G手机做出来的时候，个人消费会有一些体验。
+            第二，5G是对工业自动化、对人工智能的促进，这需要一个相当长的过程。人工智能刚刚才兴起，它需要低时延、大带宽、大流量。它深度学习，建立模型，这些都需要一个成长过程，所以不会很快就热销。
+        </div>
+        <button type="button" class="up">&lt;</button>
+        <button type="button" class="down">&gt;</button>
+    </div>
+
+    <script>
+    const pageWidth = 320;
+    $('.up').click(function () {
+        let translatex = $('.content').css("transform").replace(/[^0-9\-,]/g, '').split(',')[4];
+        let distance = parseInt(translatex) - pageWidth;
+        $('.content').css({'transform': `translateX(${distance}px)`});
+    })
+    $('.down').click(function () {
+        let translatex = $('.content').css("transform").replace(/[^0-9\-,]/g, '').split(',')[4];
+        let distance = parseInt(translatex) + pageWidth;
+        $('.content').css({ 'transform': `translateX(${distance}px)` });
+    })
+    </script>
+</body>
+</html>
