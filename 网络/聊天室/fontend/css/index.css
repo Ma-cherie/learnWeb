@@ -1,0 +1,50 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .02);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    background-color: #fff;
+    height: 700px;
+}
+
+.list {
+    height: 100%;
+    border-right: 1px solid #eee;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.list .user-box {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #eee;
+    padding: 20px 10px;
+    background-color: #fff;
+}
+
+.list .user-box:hover {
+    background-color: #eee;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.username {
+    /* vertical-align: middle; */
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+}
