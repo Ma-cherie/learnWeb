@@ -12,7 +12,7 @@
         body {
             width: 100%;
             height: 100%;
-            background-color: #eee;
+            /* background-color: #eee; */
         }
 
         body {
@@ -35,21 +35,22 @@
 </head>
 
 <body>
+
     <div class="container container-small col-sm-7 col-md-5 col-lg-4">
         <div class="form-group">
-            <label for="">用户名：</label>
-            <input type="text" class="form-control">
+            <label for="usernameInp" class="control-label">用户名：</label>
+            <input type="text" class="form-control" id="usernameInp">
         </div>
         <div class="form-group">
-            <label for="">密码：</label>
-            <input type="password" class="form-control">
+            <label for="passwordInp" class="control-label">密码：</label>
+            <input type="password" class="form-control" id="passwordInp">
         </div>
         <div class="form-inline" style="margin-bottom: 20px;">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>性别：</label>
-                        <select name="gender" id="gender" class="form-control">
+                        <label class="control-label">性别：</label>
+                        <select name="gender" id="gender" class="form-control" id="genderInp">
                             <option value=""></option>
                             <option value="male">男</option>
                             <option value="female">女</option>
@@ -58,16 +59,42 @@
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label for="">年龄：</label>
-                        <input type="number" class="form-control">
+                        <label for="ageInp" class="control-label">年龄：</label>
+                        <input type="number" class="form-control" id="ageInp">
                     </div>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <button type="button" class="btn btn-primary btn-block">注册</button>
+            <button type="button" class="btn btn-primary btn-block" id="registerBtn" >注册</button>
         </div>
     </div>
+
+    <!-- bootstrap3模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">注册成功</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="modal-btn"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="./js/register.js"></script>
 </body>
 
 </html>
