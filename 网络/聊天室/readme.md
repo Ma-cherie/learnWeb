@@ -15,6 +15,7 @@
 登录、注册
 **用户表**
 userid username password gender age
+
 获取用户列表
 获取和谁的聊天记录，按时间展示
 发送消息，存到数据库

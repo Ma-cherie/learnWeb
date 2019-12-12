@@ -99,3 +99,31 @@ server.post('/user/login',(req,res) => {
         }
     })
 })
+
+
+// 获取所有用户
+server.get('/getUsers',(req,res) => {
+    const sql = `select * from chatbox_user`;
+    pool.query(sql,(err,result) => {
+        res.json(result);
+    })
+})
+
+// 查询聊天记录：全部聊天记录（先只这个） 单个用户聊天记录
+server.get('/getChat',(req,res)=>{
+    // const userid = req.query.userid;
+})
+
+
+server.post('/addMsg',(req,res)=>{
+    const msg = req.body;
+    console.log(msg);
+    if (!msg.content) {
+        res.json({code:0,msg:'聊天内容为空'})
+        return;
+    }
+    const sql = `insert into chatbox_msg (senderid,receiverid,content,sendtime) values (?,?,?,?)`;
+    pool.query(sql, [msg.senderid, msg.receiverid, msg.content, msg.sendtime],(err,result) => {
+        res.json({code:1,msg:'消息存储成功'})
+    })
+})
