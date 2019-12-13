@@ -30,10 +30,21 @@ $('#registerBtn').click(function () {
         success (res){
             console.log(res);
             if (res.code == 200) {
-                $('#myModal').modal('show')
-                    .find('.modal-title').text('注册成功')
-                    .parents('#myModal').find('.modal-body').text(res.msg)
-                    .parents('#myModal').find('#modal-btn').text('知道了,去聊天').removeClass('btn-danger').addClass('btn-success');
+                localStorage.setItem('username', username);
+                $.ajax({
+                    url:'http://localhost:5050/getUserId',
+                    type: 'GET',
+                    data:{username: username},
+                    success(res){
+                        let userid = res[0].userid;
+                        localStorage.setItem('userid',userid);
+                        $('#myModal').modal('show')
+                            .find('.modal-title').text('注册成功')
+                            .parents('#myModal').find('.modal-body').text(res.msg)
+                            .parents('#myModal').find('#modal-btn').text('知道了,去聊天').removeClass('btn-danger').addClass('btn-success');
+                    }
+                })
+                
             }
             else{
                 $('#myModal').modal('show')

@@ -35,9 +35,9 @@ server.use(function (req, res, next) {
 })
 
 // 访问根路径
-server.get('/', (req, res) => {
-    res.send('主页');
-})
+// server.get('/', (req, res) => {
+//     // res.send('主页');
+// })
 
 // 用户注册
 server.post('/user/register',(req,res)=>{
@@ -62,8 +62,8 @@ server.post('/user/register',(req,res)=>{
         //执行数据库操作——INSERT 添加用户
         let sql2 = `insert into chatbox_user (username,password,gender,age) values (?,?,?,?);`;
         pool.query(sql2,[user.username,user.password,user.gender,user.age],(err,result)=>{
-            console.log(err);
-            console.log(result);
+            // console.log(err);
+            // console.log(result);
             if (result) {
                 //向客户端输出响应消息
                 res.json({ code: 200, msg: '用户注册成功' });
@@ -109,21 +109,49 @@ server.get('/getUsers',(req,res) => {
     })
 })
 
-// 查询聊天记录：全部聊天记录（先只这个） 单个用户聊天记录
+// 查询聊天记录：所有聊天记录返回（发送者或接收者是自己，或者接收者是群聊的）
+// 要传两个参数：userid
 server.get('/getChat',(req,res)=>{
-    // const userid = req.query.userid;
+    const query = req.query;
+    const sql = `select * from chatbox_msg where senderid=? or receiverid=? or receiverid=666`;
+    pool.query(sql, [query.userid, query.userid],(err,result) => {
+        res.json(result);
+    })
 })
 
-
+// 存储聊天消息
 server.post('/addMsg',(req,res)=>{
     const msg = req.body;
-    console.log(msg);
+    // console.log(msg);
     if (!msg.content) {
         res.json({code:0,msg:'聊天内容为空'})
         return;
     }
+    // console.log(msg.sendtime, typeof msg.sendtime);
     const sql = `insert into chatbox_msg (senderid,receiverid,content,sendtime) values (?,?,?,?)`;
     pool.query(sql, [msg.senderid, msg.receiverid, msg.content, msg.sendtime],(err,result) => {
         res.json({code:1,msg:'消息存储成功'})
+    })
+})
+
+// 获取新的聊天记录,传参：时间
+server.get('/getNewMsg',(req,res)=>{
+    const query = req.query;
+    // console.log(query);
+    const sql = `select * from chatbox_msg where (senderid=? or receiverid=? or receiverid=666) and sendtime>?`;
+    pool.query(sql, [query.userid, query.userid,query.lastTime], (err, result) => {
+        res.json(result);
+    })
+})
+
+// 获取用户id
+server.get('/getUserId',(req,res)=>{
+    const username = req.query.username;
+    if (!username) {
+        return;
+    }
+    const sql = `select userid from chatbox_user where username=?`;
+    pool.query(sql,[username],(err,result) => {
+        res.json(result);
     })
 })
