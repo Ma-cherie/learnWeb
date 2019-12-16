@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .wrapper{
+        width: 600px;
+        height: 600px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .content{
+        width: 100px;
+        /* flex-basis: 120px; */
+        height: 200px;
+        background-color: #0ff;
+        flex-shrink: 1;
+    }
+    .content:first-of-type{
+        background-color: #f0f;
+    }
+    .content:nth-of-type(2){
+        background-color: #0ff;
+        opacity: .6;
+    }
+    .content:last-of-type{
+        background-color: #ff0;
+    } 
+    </style>
+</head>
+<body>
+    <!-- <div class="wrapper">
+        <div class="content">1 Lorem ipsumdasdfasdfasdfasdfolor</div>
+        <div class="content"></div>
+        <div class="content"></div>
+    </div> -->
+</body>
+</html>
