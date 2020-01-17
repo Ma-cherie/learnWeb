@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 联系人盒子 wrapper */
+.wrapper{
+    width: 400px;
+    padding: 10px 15px;
+    border: 1px solid #cccccc;
+    margin: 100px auto 0px;
+    border-radius: 6px;
+}
+
+/* 搜索区域 sWrapper */
+.sWrapper{
+    margin-bottom: 20px;
+}
+
+.sWrapper input{
+    width: 220px;
+    height: 25px;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+
+.sWrapper .btn{
+    cursor: pointer;
+    color: #3c8dff;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.sWrapper .btn.active{
+    background-color: #3c8dff;
+    color: #fff;
+}
+
+/* 联系人列表区域 fWrapper */
+.fWrapper li{
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    border-bottom: 1px solid #999;
+}
+
+.fWrapper li img{
+    position: absolute;
+    top: 10px;
+    left: 0px;
+}
+.fWrapper li .name{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.fWrapper li .desc{
+    font-size: 12px;
+    color: #999;
+}
