@@ -14,4 +14,4 @@
 **Store**
 通过Store来管理状态，Store有getSate、dispatch、subscribe
 
-!(模型)[./desc.png]
+!(模型)[desc.png]

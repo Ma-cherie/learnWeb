@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+}
+html,body{
+    height: 100%;
+}
+
+/* header */
+.header{
+    height: 70px;
+    line-height: 70px;
+    background-color: #354457;
+}
+.header .logo{
+    width: 200px;
+    padding-left: 20px;
+}
+
+.header .logo img{
+    width: 30px;
+    vertical-align: middle;
+}
+.header .logo span{
+    font-size: 14px;
+    color: #b3bcc5;
+}
+
+/* 左侧导航 */
+.left-menu{
+    width: 200px;
+    background-color: #4d5e70;
+    height: calc(100% - 70px);
+    float: left;
+}
+.left-menu dl{
+    line-height: 40px;
+    color: #b3bcc5;
+    font-size: 14px;
+}
+.left-menu dt{
+    font-weight: bold;
+    padding-left: 8px;
+}
+.left-menu dd{
+    padding-left: 30px;
+    cursor: pointer;
+}
+.left-menu dd:hover{
+    color: #354457;
+    background-color: rgba(255,255,255,0.5);
+}
+.left-menu dd.active {
+    background-color: #ddd;
+    color: #354457;
+}
+/* 右侧内容区 */
+.right-content{
+    float: right;
+    width: calc(100% - 200px);
+    height: calc(100% - 70px);
+    background-color: #eee;
+}
+/* 学生列表 */
+.student-list{
+    display: none;
+}
+.student-list table{
+    width: 100%;
+    text-align: center;
+}
+.student-list table thead{
+    background-color: #e3e8ee;
+    color: #646987;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+}
+.student-list table tbody{
+    background-color: #fff;
+}
+.student-list table .btn{
+    padding: 3px 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+.student-list table .btn.edit{
+    background-color: #5cb85c;
+}
+.student-list table .btn.edit:hover{
+    background-color: #398439;
+}
+.student-list table .btn.delete{
+    background-color: #d9534f;
+}
+.student-list table .btn.delete:hover {
+    background-color: #c9302c;
+}
+/* 新增学生的页面 */
+.student-add{
+    height: 100%;
+    display: none;
+}
+.student-add .form-box {
+    width: 400px;
+    margin: 50px auto;
+}
+.student-add .form-box .form-control{
+    margin-bottom: 15px;
+}
+.student-add .form-box .form-control label:not(.sex){
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.student-add .form-box .form-control .sex{
+    cursor: pointer;
+}
+.student-add .form-box .btn{
+    padding: 5px 25px;
+}
+.right-content .content-active{
+    display: block;
+}
