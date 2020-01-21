@@ -102,24 +102,52 @@ html,body{
     height: 100%;
     display: none;
 }
-.student-add .form-box {
+.form-box {
     width: 400px;
     margin: 50px auto;
 }
-.student-add .form-box .form-control{
+.form-box .form-control{
     margin-bottom: 15px;
 }
-.student-add .form-box .form-control label:not(.sex){
+.form-box .form-control label:not(.sex){
     display: inline-block;
     width: 100px;
     text-align: right;
 }
-.student-add .form-box .form-control .sex{
+.form-box .form-control .sex{
     cursor: pointer;
 }
-.student-add .form-box .btn{
+.form-box .btn{
     padding: 5px 25px;
 }
 .right-content .content-active{
     display: block;
+}
+
+/* 模态框modal */
+.modal{
+    display: none;
+}
+.modal .mask{
+    /* position: fixed;
+    width: 100%;
+    height: 100%; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+.modal .content{
+    background-color: #fff;
+    position: absolute;
+    top: calc(50% - 225px);
+    left: calc(50% - 250px);
+    width: 500px;
+    height: 550px;
+}
+.modal .content h3{
+    padding-top: 30px;
+    padding-left:35px;
 }
