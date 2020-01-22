@@ -16,14 +16,14 @@
         </div>
     </div>
     <div class="left-menu">
-        <dl>
+        <dl class="menu-list">
             <dt>学生管理</dt>
             <dd class="active" data-for="student-list">学生列表</dd>
             <dd data-for="student-add">添加学生</dd>
         </dl>
     </div>
     <div class="right-content">
-        <div class="student-list content-active">
+        <div class="student-list content-active" id="student-list">
             <table>
                 <thead>
                     <th>学号</th>
@@ -35,33 +35,8 @@
                     <th>住址</th>
                     <th>操作</th>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>0001</td>
-                        <td>拴蛋</td>
-                        <td>男</td>
-                        <td>123@qq.com</td>
-                        <td>18</td>
-                        <td>12323232323</td>
-                        <td>广州</td>
-                        <td>
-                            <button class="btn edit">编辑</button>
-                            <button class="btn delete">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0001</td>
-                        <td>拴蛋</td>
-                        <td>男</td>
-                        <td>123@qq.com</td>
-                        <td>18</td>
-                        <td></td>
-                        <td>广州</td>
-                        <td>
-                            <button class="btn edit">编辑</button>
-                            <button class="btn delete">删除</button>
-                        </td>
-                    </tr>
+                <tbody id="table-body">
+                    
                 </tbody>
             </table>
             <div class="modal">
@@ -111,17 +86,17 @@
                 </div>
             </div>
         </div>
-        <div class="student-add">
-            <form class="form-box">
+        <div class="student-add" id="student-add">
+            <form class="form-box" id="student-add-form">
                 <div class="form-control">
                     <label for="name">姓名</label>
                     <input type="text" id="name">
                 </div>
                 <div class="form-control">
                     <label for="sex">性别</label>
-                    <input type="radio" name="sex" id="male" checked>
+                    <input type="radio" name="sex" id="male" value="0" checked>
                     <label for="male" class="sex">男</label>
-                    <input type="radio" name="sex" id="female">
+                    <input type="radio" name="sex" id="female" value="1"> 
                     <label for="female" class="sex">女</label>
                 </div>
                 <div class="form-control">
@@ -149,10 +124,12 @@
                     <!-- <button>提交</button> -->
                     <label for=""></label>
                     <input type="reset" value="重置" class="btn">
-                    <input type="submit" value="提交" class="btn">
+                    <input type="submit" id="addStudentBtn" value="提交" class="btn">
                 </div>
             </form>
         </div>
     </div>
+
+    <script src="./index.js"></script>
 </body>
 </html>

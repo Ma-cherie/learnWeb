@@ -99,7 +99,7 @@ html,body{
 }
 /* 新增学生的页面 */
 .student-add{
-    height: 100%;
+    /* height: 100%; */
     display: none;
 }
 .form-box {
