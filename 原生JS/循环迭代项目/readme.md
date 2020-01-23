@@ -10,22 +10,32 @@
 3. 翻页 搜索
 
 ## 知识点
+- 用一个bindEvent函数绑定页面中所有事件,方便维护。 
+
+- 发现类似的功能，提取思想,抽象成函数,减少代码冗余
+
 - label是行级元素
 
 - 表单重置    
     <input type="reset" value="重置">
     form.reset();
 
-- form表单获取了之后，form.name获取id=name的元素，form.name.value获取值
+- 获取表单元素
+    form表单获取了之后，form.name获取id=name的元素，form.name.value获取值
 
-- 用一个bindEvent函数绑定页面中所有事件,方便维护。
+- 对象拼接 Object.assign()
 
-- 改变元素的class
-    className = xxx
-    classList.add  classList.remove
-
-- 发现类似的功能，提取思想,抽象成函数
+- 事件委托。导航等，要给一堆类似的元素添加点击事件，考虑事件委托。
 
 - e.preventDefault() 取消表单默认事件
 
-- 对象拼接 Object.assign()
+- 400 Bad Request 传的参数有问题
+
+- ClassList 
+    改变元素的class
+    className = xxx
+    classList.add  classList.remove
+
+- 元素居中绝对定位+top left right bottom：0
+
+

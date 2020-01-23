@@ -142,7 +142,7 @@ html,body{
 .modal .content{
     background-color: #fff;
     position: absolute;
-    top: calc(50% - 225px);
+    top: calc(50% - 250px);
     left: calc(50% - 250px);
     width: 500px;
     height: 550px;
@@ -150,4 +150,12 @@ html,body{
 .modal .content h3{
     padding-top: 30px;
     padding-left:35px;
+}
+
+
+/* 分页 按钮 */
+.turn-page{
+    width: 300px;
+    text-align: center;
+    margin: 50px auto 0 auto;
 }
