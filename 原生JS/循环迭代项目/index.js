@@ -10,9 +10,11 @@ let tableData;
 // 当前页码
 let currentPage = 1 ;
 // 一页条数
-let pageSize = 2;
+let pageSize = 3;
 // 总页数
 let pageNum = 1;
+// 模式：普通列表模式(normal) 还是 搜索模式(search) 
+let mode = 'normal';
 
 /**用一个bindEvent函数绑定页面中所有事件 */
 function bindEvent() {
@@ -122,16 +124,54 @@ function bindEvent() {
         if (currentPage > 1) {
             currentPage--;
         }
-        getTableData();
+        if (mode == 'search') {
+            searchStudent();
+        } else {
+            getTableData();
+        }
     }
     nextBtn.onclick = function (e) {
         if (currentPage < pageNum) {
             currentPage++;
         }
-        getTableData();
+        if (mode == 'search') {
+            searchStudent();
+        }else{
+            getTableData();
+        }
     }
+
+    // 搜索
+    const searchBtn = document.getElementsByClassName('searchBtn')[0];
+    searchBtn.onclick = function () {
+        currentPage = 1;
+        searchStudent();
+    };
 }
 
+// 搜索学生点击事件
+function searchStudent() {
+    const searchInp = document.getElementById('keyword');
+    const sexSelect = document.getElementById('sexSelect');
+    let search = searchInp.value;
+    let sex = parseInt(sexSelect.value);
+    console.log(typeof search, search, typeof sex, sex);
+    transferData('/api/student/searchStudent', {
+        sex: sex,
+        search: search,
+        page: currentPage,
+        size: pageSize
+    }, function (res) {
+        console.log('搜素学生', res);
+        let studentList = res.data.searchList;
+        tableData = studentList;
+        // currentPage = 1;
+        pageNum = Math.ceil(res.data.cont / pageSize);
+        mode = 'search';
+        renderTable(studentList);
+        renderTurnPage();
+    })
+}
 
 /**
  * 获取学生列表数据
@@ -142,12 +182,13 @@ function getTableData() {
         page: currentPage,
         size: pageSize
     },function (response) {
-        console.log(response);
+        // console.log(response);
         // 渲染数据
         // renderTable(response.data);
         // tableData = response.data;
         tableData = response.data.findByPage;
         pageNum = Math.ceil(response.data.cont / pageSize);
+        mode = 'normal';
         renderTable(response.data.findByPage);
         renderTurnPage();
     })
@@ -264,7 +305,8 @@ function renderEditTable(data) {
 function transferData(url,data,success) {
     // 提交数据
     const hostname = 'https://open.duyiedu.com';
-    const appkey = 'Lazy_Bone_1569767870124';
+    // const appkey = 'Lazy_Bone_1569767870124';
+    const appkey = 'Dirty_1579775100154';
     let response = saveData(hostname + url, Object.assign({appkey: appkey}, data) );
     // console.log(response);
     if (response.status == "fail") {

@@ -24,6 +24,18 @@
     </div>
     <div class="right-content">
         <div class="student-list content-active" id="student-list">
+            <div class="search">
+                <label for="keyword">关键词：</label>
+                <input type="text" class="search-inp" id="keyword">
+                <label for="sexSelect">性别：</label>
+                <select name="sex" id="sexSelect">
+                    <option value="-1">不限男女</option>
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                </select>
+
+                <button class="searchBtn">搜索</button>
+            </div>
             <table>
                 <thead>
                     <th>学号</th>

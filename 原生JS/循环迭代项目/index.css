@@ -97,6 +97,14 @@ html,body{
 .student-list table .btn.delete:hover {
     background-color: #c9302c;
 }
+
+/* 搜索区域 */
+.search{
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+
 /* 新增学生的页面 */
 .student-add{
     /* height: 100%; */
