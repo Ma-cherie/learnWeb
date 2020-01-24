@@ -27,52 +27,29 @@ function bindEvent() {
             alert('数据填写不完全，请检查后提交');
         }
         else{
-            $.ajax({
-                url: 'https://open.duyiedu.com/api/student/addStudent',
-                type: 'GET',
-                data: Object.assign({ appkey: 'Dirty_1579775100154', }, data),
-                // 希望从服务器拿到的数据类型，（除非是jsonp代表跨域方式）
-                dataType: 'json'
-            }).then((res) => {
-                console.log(res);
-                if (res.status == 'fail') {
-                    alert(res.msg);
-                }else{
-                    alert(res.msg);
-                    $('#student-add-form')[0].reset();
-                    $('[data-for=student-list]').click();
-                    getTableData();
-                }
+            transferData('/api/student/addStudent',data,function (res) {
+                alert(res.msg);
+                $('#student-add-form')[0].reset();
+                $('[data-for=student-list]').click();
+                getTableData();
             })
         }
     })
 
-    // 编辑、删除学生
+    // 编辑学生
     $('#table-body').on('click','.edit',function (e) {
         $('.modal').slideDown();
         let index = $(this).parents('tr').data('index');
         let student = tableData[index];
         renderEditForm(student);
     })
+    // 删除学生
     $('#table-body').on('click','.delete',function (e) {
         let index = $(this).parents('tr').data('index');
         let sNo = tableData[index].sNo;
-        $.ajax({
-            url: 'https://open.duyiedu.com/api/student/delBySno',
-            type: 'GET',
-            dataType: 'json',
-            data:{
-                appkey: 'Dirty_1579775100154',
-                sNo: sNo
-            }
-        }).then(res => {
-            console.log(res);
-            if (res.status == 'fail') {
-                alert(res.msg);
-            }else{
-                alert(res.msg);
-                getTableData();
-            }
+        transferData('/api/student/delBySno',{sNo: sNo},function (res) {
+            alert(res.msg);
+            getTableData();
         })
     })
     
@@ -87,25 +64,13 @@ function bindEvent() {
             alert('数据填写不完全，请检查后提交');
         }
         else {
-            $.ajax({
-                url: 'https://open.duyiedu.com/api/student/updateStudent',
-                type: 'GET',
-                data: Object.assign({
-                     appkey: 'Dirty_1579775100154', 
-                     sNo: sNo
-                    }, data),
-                // 希望从服务器拿到的数据类型，（除非是jsonp代表跨域方式）
-                dataType: 'json'
-            }).then((res) => {
-                console.log(res);
-                if (res.status == 'fail') {
-                    alert(res.msg);
-                } else {
-                    alert(res.msg);
-                    $('#student-add-form')[0].reset();
-                    $('.mask').click();
-                    getTableData();
-                }
+            transferData('/api/student/updateStudent', Object.assign({
+                sNo: sNo
+            }, data),function (res) {
+                alert(res.msg);
+                $('#student-add-form')[0].reset();
+                $('.mask').click();
+                getTableData();
             })
         }
     })
@@ -131,23 +96,13 @@ function formatData(data) {
 
 // 获取学生列表数据
 function getTableData() {
-    $.ajax({
-        url: 'https://open.duyiedu.com/api/student/findByPage',
-        type: "GET",
-        dataType: 'json',
-        data: {
-            appkey: 'Dirty_1579775100154',
-            page: currentPage,
-            size: pageSize
-        },
-    }).then(res => {
-        if (res.status == 'fail') {
-            alert(res.msg);
-        } else {
-            tableData = res.data.findByPage;
-            pageNum = Math.ceil(res.data.cont / pageSize);
-            renderTable(tableData);
-        }
+    transferData('/api/student/findByPage',{
+        page: currentPage,
+        size: pageSize
+    },function (res) {
+        tableData = res.data.findByPage;
+        pageNum = Math.ceil(res.data.cont / pageSize);
+        renderTable(tableData);
     })
 }
 
@@ -191,6 +146,30 @@ function renderEditForm(data) {
     editForm.address.value = data.address;
 }
 
+
+// 封装数据处理函数 处理前后端数据交互
+function transferData(url, data, successCb) {
+    // 提交数据
+    const hostname = 'https://open.duyiedu.com';
+    // const appkey = 'Lazy_Bone_1569767870124';
+    const appkey = 'Dirty_1579775100154';
+    // 请求
+    $.ajax({
+        url: hostname + url,
+        type: 'GET',
+        data: $.extend({
+            appkey: appkey
+        }, data),
+        dataType: 'json',
+        success(res){
+            if (res.status == "fail") {
+                alert(res.msg);
+            } else if (res.status == 'success') {
+                successCb(res);
+            }
+        }
+    })
+}
 
 bindEvent();
 getTableData();

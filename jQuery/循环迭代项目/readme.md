@@ -16,5 +16,11 @@ $('#form').serializeArray() name和value的数组
 
 - 拼接对象 $.extend({},{})  Object.assign({},{})
 
+
 - .show() .hide()
+
+
+- 插件 组件 模块化
+插件：可以独立出来用
+组件：页面的一部分 
 
