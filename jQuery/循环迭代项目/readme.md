@@ -5,6 +5,16 @@
 本次的技术栈：html + css + jQuery
 
 ## 知识点
+- 获取表单数据 
+$('#form').serialize() 拿到的是表单内name和value 字符串拼接
+$('#form').serializeArray() name和value的数组
 
 
+- 为什么存储出生年份而不是年龄？
+因为年龄会变，每一年都要重新更新数据。
+
+
+- 拼接对象 $.extend({},{})  Object.assign({},{})
+
+- .show() .hide()
 

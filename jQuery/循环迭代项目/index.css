@@ -59,10 +59,15 @@ html,body{
     width: calc(100% - 200px);
     height: calc(100% - 70px);
     background-color: #eee;
+    position: relative;
+}
+.right-content > div{
+    position: absolute;
 }
 /* 学生列表 */
 .student-list{
     display: none;
+    width: 100%;
 }
 .student-list table{
     width: 100%;
@@ -107,8 +112,8 @@ html,body{
 
 /* 新增学生的页面 */
 .student-add{
-    /* height: 100%; */
     display: none;
+    width: 100%;
 }
 .form-box {
     width: 400px;
@@ -135,6 +140,11 @@ html,body{
 /* 模态框modal */
 .modal{
     display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 .modal .mask{
     /* position: fixed;
@@ -150,7 +160,7 @@ html,body{
 .modal .content{
     background-color: #fff;
     position: absolute;
-    top: calc(50% - 250px);
+    top: calc(50% - 275px);
     left: calc(50% - 250px);
     width: 500px;
     height: 550px;

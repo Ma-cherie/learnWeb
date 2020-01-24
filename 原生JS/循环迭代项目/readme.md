@@ -21,7 +21,7 @@
     form.reset();
 
 - 获取表单元素
-    form表单获取了之后，form.name获取id=name的元素，form.name.value获取值
+    form表单获取了之后，form.name获取id=name或name=name的元素，form.name.value获取值
 
 - 对象拼接 Object.assign()
 
@@ -32,9 +32,9 @@
 - 400 Bad Request 传的参数有问题
 
 - ClassList 
-    改变元素的class
-    className = xxx
-    classList.add  classList.remove
+改变元素的class
+className = xxx
+classList.add  classList.remove
 
 - 元素居中绝对定位+top left right bottom：0
 
