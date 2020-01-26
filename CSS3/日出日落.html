@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日出日落，月出月落</title>
+    <style>
+    *{
+        margin: 0;
+    }
+    html,body{
+        background-color: #000;
+        height: 100%;
+    }
+    .space{
+        height: 100%;
+        background-image: linear-gradient(to bottom,rgb(0,130,255),rgb(255,255,255));
+        animation: space-change 10s;
+    }
+
+    @keyframes space-change {
+        from{
+            opacity: .3;
+        }
+        25%{
+            opacity: 1;
+        }
+        50%{
+            opacity: .3;
+        }
+        75%{
+            opacity: .1;
+        }
+        to{
+            opacity: .3;
+        }
+    }
+
+    .sun{
+        position: absolute;
+        left: calc(50% - 35px);
+        top: calc(50% - 35px);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0px 0px 100px 50px #fff,
+                    0px 0px 200px 100px #ff0;
+        transform: scale(.5,.5);
+        animation: sunrise 10s ;
+        animation-fill-mode: both;
+    }
+    
+    @keyframes sunrise {
+        0%{
+            opacity: 0;
+            transform: scale(.7,.7) translateX(-1000px) translateY(0);
+        }
+        30%{
+            opacity: 1;
+            transform: scale(.5,.5) translateX(0px) translateY(-600px);
+        }
+        50%{
+            opacity: 0;
+            transform: scale(.7,.7) translateX(1000px) translateY(0px);
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+
+    .moon{
+        position: absolute;
+        left: calc(50% - 45px);
+        top: calc(50% - 45px);
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px #fff,
+                    inset 0px 0px 5px #000;
+        animation: moonrise 10s;
+    }
+
+    @keyframes moonrise {
+        0%{
+            opacity: 0;
+            transform: scale(.7,.7) translateX(-1000px) translateY(0);
+        }
+        25%{
+            opacity: 0;
+        }
+        50%{
+            opacity: 0;
+            transform: scale(.7,.7) translateX(-1000px) translateY(0);
+        }
+        75%{
+            opacity: 1;
+            transform: scale(.5,.5) translateX(0px) translateY(-600px);
+        }
+        100%{
+            opacity: 0;
+            transform: scale(.7,.7) translateX(1000px) translateY(0px);
+        }
+    }
+
+    .space,.sun,.moon{
+        /* animation-fill-mode: both; */
+        animation-iteration-count: infinite;
+        animation-timing-function: ease;
+    }
+    </style>
+</head>
+<body>
+    <div class="space"></div>
+    <div class="sun"></div>
+    <div class="moon"></div>
+</body>
+</html>
