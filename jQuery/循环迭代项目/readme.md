@@ -4,6 +4,10 @@
 
 本次的技术栈：html + css + jQuery
 
+功能点：
+1. 用jq优化上个版本的项目
+2. 封装分页插件
+
 ## 知识点
 - 获取表单数据 
 $('#form').serialize() 拿到的是表单内name和value 字符串拼接
