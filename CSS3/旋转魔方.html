@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转魔方</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        :root{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            perspective: 2000px;
+            transform-style: preserve-3d;
+        }
+        @keyframes round{
+            from{
+                transform: rotate3d(1,1,1,0deg);
+            }
+            to{
+                transform: rotate3d(1,1,1,360deg);
+            }
+        }
+
+        .wrapper{
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: calc(50% - 150px);
+            left: calc(50% - 150px);
+            /* background-color: orange; */
+            transform-style: preserve-3d;
+            animation: round 5s linear infinite;
+        }
+        .one,.two,.three,.four,.five,.six{
+            width: 300px;
+            height: 300px;
+            position: absolute;
+        }
+        /* 一 正 */
+        .one{
+            background-color: red;
+            transform: translateZ(150px);
+        }
+        /* 二 左 */
+        .two{
+            background-color: orange;
+            transform: translateX(-150px) rotateY(90deg) ;
+        }
+        /* 三 下 */
+        .three{ 
+            background-color: yellow;
+            transform: translateY(150px) rotateX(90deg);
+        }
+        /* 四 上 */
+        .four{
+            background-color: green;
+            transform: translateY(-150px) rotateX(90deg);
+        }
+        /* 五 右 */
+        .five{
+            background-color: blue;
+            transform: translateX(150px) rotateY(90deg);
+        }
+        /* 六 后 */
+        .six{
+            background-color: purple;
+            transform: translateZ(-150px);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+        <div class="six"></div>
+    </div>
+
+
+</body>
+</html>
