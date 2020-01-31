@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>svg</title>
+    <style>
+        line{
+            stroke: black;
+        }
+        polyline{
+            fill: transparent;
+            stroke: violet;
+        }
+        polygon{
+            fill: transparent;
+            stroke: violet;
+        }
+        path{
+            fill: transparent;
+            stroke: red;
+        }
+    </style>
+</head>
+<body>
+    <svg width="500px" height="300px" style="border: 1px solid black;">
+        <!-- <line x1='100' y1='100' x2='200' y2='200'></line> -->
+        <!-- <ellipse rx=50 ry=30 cx=100 cy=100></ellipse> -->
+        <!-- <polyline points='0 0,50 100,200,50'></polyline> -->
+        <!-- <polygon points='0 0,50 100,200,50'></polygon> -->
+        <!-- <text x=400 y=100>Stronger</text> -->
+        <!-- <path d="M 100 100 L 200 100 l 100 100"></path> -->
+        <path d="M 100 100 h 200 v 200 z"></path>
+    </svg>
+</body>
+</html>
