@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>draggable</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    /* 移动位置 */
+    /* .box{
+        width: 100px;
+        height: 100px;
+        background-color: #abcdef;
+        position: absolute;
+    } */
+
+    .box1{
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+    }
+    .box2{
+        position: absolute;
+        left: 300px;
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+    }
+    li{
+        width: 100px;
+        height: 30px;
+        margin: 10px auto 10px auto;
+        background: orange;
+        list-style: none;
+    }
+    </style>
+</head>
+<body>
+    <!-- 移动位置 -->
+    <!-- <div class="box" draggable="true"></div>
+    <script>
+    let box = document.getElementsByClassName('box')[0];
+    let beginx,beginy;
+    box.ondragstart = function (e) {
+        beginx = e.clientX;
+        beginy = e.clientY;
+    }
+    box.ondragend = function (e) {
+        let x = e.clientX - beginx;
+        let y = e.clientY - beginy;
+        box.style.top = box.offsetTop + y +'px';
+        box.style.left = box.offsetLeft + x +'px';
+    }
+    </script> -->
+
+    <!-- 两个盒子直接拖拽 -->
+    <div class="box1">
+        <ul>
+            <li data-index="0" draggable="true"></li>
+            <li data-index="1" draggable="true"></li>
+            <li data-index="2" draggable="true"></li>
+        </ul>
+    </div>
+    <div class="box2"></div>
+
+    <script>
+    let dragDom;
+    let box1 = document.getElementsByClassName('box1')[0];
+    let box2 = document.getElementsByClassName('box2')[0];
+    let lis = document.getElementsByTagName('li');
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].ondragstart = function (e) {
+            dragDom = e.target;
+            e.dataTransfer.effectAllowed = 'link';
+        }
+    }
+
+    box2.ondragover = function (e) {
+        e.preventDefault();
+    }
+    box2.ondrop = function (e) {
+        box2.appendChild(dragDom);
+        dragDom = null;
+    }
+
+    box1.ondragover = function (e) {
+        e.preventDefault();
+    }
+    box1.ondrop = function (e) {
+        e.dataTransfer.dropEffect = 'link';
+        box1.appendChild(dragDom);
+        dragDom = null;
+    }
+    </script>
+</body>
+</html>

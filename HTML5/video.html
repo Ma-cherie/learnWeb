@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>audio & video</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    :root,body{
+        height: 100%;
+    }
+    .video-player{
+        width: 1000px;
+        height: 500px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .video-player.fullScreen{
+        width: 100%;
+        height: 100%;
+    }
+    video{
+        width: 1000px;
+        height: 500px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    video.fullScreen{
+        width: 100%;
+        height: 100%;
+    }
+    .menu{
+        width: 100%;
+        height: 50px;
+        background-color: rgba(0, 0, 0, .5);
+        position: absolute;
+        bottom: 0;
+        /* display: none; */
+    }
+    .pausedBtn{
+        width: 60px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 30px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .time{
+        width: 100px;
+        height: 30px;
+        /* border: 1px solid #fff; */
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 120px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+    }
+    .progress-bar{
+        width: 100%;
+        position: absolute;
+        top: -2px;
+        height: 2px;
+        background-color: rgba(0, 0, 0, .3);
+    }
+    .progress-bar.active{
+        height: 8px;
+        top: -8px;
+    }
+    .progress-bar .progress{
+        width: 0%;
+        height: 100%;
+        background-color: orange;
+    }
+    .progress-bar .dot{
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        top: -2px;
+        left: 30%;
+    }
+    .progress-bar .dot.active{
+        width: 10px;
+        height: 12px;
+    }
+    .quick{
+        width: 60px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 180px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .volume-add{
+        width: 30px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 140px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .volume-decrease{
+        width: 30px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 100px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .full-screen{
+        width: 60px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    /* .volume{
+        width: 60px;
+        height: 30px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 100px;
+        margin-top: -15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .volume-bar{
+        position: absolute;
+        top: -112px;
+        left: calc(50% - 15px);
+        width: 30px;
+        height: 100px;
+        background-color: rgba(0,0,0,.5);
+    }
+    .volume-bar div{
+        width: 2px;
+        height: 80%;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .volume-bar i{
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: orange;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    } */
+    </style>
+</head>
+<body>
+    <!-- <audio src="./music.mp3" controls></audio> -->
+
+    <div class="video-player">
+        <video src="./music.mp3"></video>
+        <div class="menu">
+            <div class="pausedBtn" onselectstart="return false">播放</div>
+            <div class="time" onselectstart="return false"></div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+                <i class="dot"></i>
+            </div>
+            <div class="quick" data-speed='1' onselectstart="return false">x1.0</div>
+            <!-- <div class="volume">
+                音量
+                <div class="volume-bar">
+                    <div></div>
+                    <i draggable="true"></i>
+                </div>
+            </div> -->
+            <div class="volume-add" onselectstart="return false">+</div>
+            <div class="volume-decrease" onselectstart="return false">-</div>
+            <div class="full-screen" onselectstart="return false">全屏</div>
+        </div>
+    </div>
+
+    <script>
+        const player = document.getElementsByClassName('video-player')[0];
+        const menu = document.getElementsByClassName('menu')[0];
+        const video = document.getElementsByTagName('video')[0];
+        const pausedBtn = document.getElementsByClassName('pausedBtn')[0];
+        const time = document.getElementsByClassName('time')[0];
+        const progressBar = document.getElementsByClassName('progress-bar')[0];
+        const progress = progressBar.getElementsByClassName('progress')[0];
+        const dot = progressBar.getElementsByClassName('dot')[0];
+        const quickBtn = document.getElementsByClassName('quick')[0];
+        const volumeAddBtn = document.getElementsByClassName('volume-add')[0];
+        const volumeDeBtn = document.getElementsByClassName('volume-decrease')[0];
+        const fullScreenBtn = document.getElementsByClassName('full-screen')[0];
+        // 移入移出视频区域
+        // player.onmouseenter = function (e) {
+        //     menu.style.display = "block";
+        // }
+        // player.onmouseleave = function (e) {
+        //     menu.style.display = "none";
+        // }
+        // 播放暂停
+        pausedBtn.addEventListener('click',function (e) {
+            if (video.paused) {
+                video.play();
+                pausedBtn.innerText = '暂停';
+            }else{
+                video.pause();
+                pausedBtn.innerText = '播放';
+            }
+        },false);
+        // 时间显示更新 进度条更新
+        setInterval(() => {
+            let totalTime = video.duration;
+            let currentTime = video.currentTime;
+            let currentTimeMin = parseInt(currentTime / 60);
+            let totalTimeMin = parseInt(totalTime / 60);
+            let currentTimeSec = parseInt(currentTime % 60);
+            let totalTimeSec = parseInt(totalTime % 60);
+            time.innerText = currentTimeMin + ":" + currentTimeSec + "/" + totalTimeMin + ":" + totalTimeSec;
+            
+            let temp = currentTime / totalTime * progressBar.offsetWidth;
+            progress.style.width = temp + "px";
+            dot.style.left = temp + 'px';
+        }, 500);
+
+        // 进度条
+        progressBar.onmouseenter = function (e) {
+            progressBar.classList.add('active');
+            dot.classList.add('active');
+        }
+        progressBar.onmouseleave = function (e) {
+            progressBar.classList.remove('active');
+            dot.classList.remove('active');
+        }
+        progressBar.onclick = function (e) {
+            let totalWidth = progressBar.offsetWidth;
+            let target = e.layerX / totalWidth * video.duration;
+            console.log(e.layerX / totalWidth)
+            progress.style.width = e.layerX / totalWidth;
+            dot.style.left = e.layerX / totalWidth;
+            video.currentTime = target;
+        }
+
+        // 倍速播放
+        quickBtn.onclick = function (e) {
+            if (quickBtn.innerText == "x1.0") {
+                quickBtn.innerText = 'x1.25';
+                video.playbackRate = 1.25;
+            }else if (quickBtn.innerText == "x1.25") {
+                quickBtn.innerText = 'x1.5';
+                video.playbackRate = 1.5;
+            }else if (quickBtn.innerText == "x1.5") {
+                quickBtn.innerText = 'x2';
+                video.playbackRate = 2;
+            }else{
+                quickBtn.innerText = 'x1.0';
+                video.playbackRate = 1;
+            }
+        }
+
+        // 音量
+        volumeAddBtn.onclick = function (e) {
+            video.volume = (video.volume + 0.1) >=1 ? 1 : (video.volume + 0.1);
+        }
+        volumeDeBtn.onclick = function (e) {
+            video.volume = (video.volume - 0.1) <= 0 ? 0 : (video.volume - 0.1);
+        }
+        // 全屏
+        fullScreenBtn.onclick = function (e) {
+            let dom = document.documentElement;
+            dom.requestFullscreen();
+            // player.style.width = window.screen.width + 'px';
+            // player.style.height = window.screen.height + 'px';
+            // video.style.width = window.screen.width + 'px';
+            // video.style.height = window.screen.height + 'px';
+            player.classList.add('fullScreen');
+            video.classList.add('fullScreen');
+        }
+
+        // 退出全屏
+        window.onkeydown = function (e) {
+            console.log(typeof e.keyCode);
+            if (e.keyCode == 27) {
+                player.classList.remove('fullScreen');
+                video.classList.remove('fullScreen');
+            }
+        }
+    </script>
+</body>
+</html>

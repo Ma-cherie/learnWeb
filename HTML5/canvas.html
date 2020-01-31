@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+    canvas{
+        /* width: 500px; */
+        /* height: 300px; */
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500px" height="300px"></canvas>
+    <script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    
+        ctx.lineCap = 'butt'; //square加长方形,round
+        ctx.lineJoin = 'miter'; //round圆滑,bevel砍掉，miter尖的(miterLimit)
+
+
+    </script>
+</body>
+</html>
