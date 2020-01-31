@@ -21,8 +21,15 @@
     
         ctx.lineCap = 'butt'; //square加长方形,round
         ctx.lineJoin = 'miter'; //round圆滑,bevel砍掉，miter尖的(miterLimit)
+        // canvas.getContext('2d').rotate(Math.PI / 3);
 
 
+        window.onresize = function (e) {
+            console.log('yo',e);
+        }
+        window.onblur = function (e) {
+            console.log('blur',e)
+        }
     </script>
 </body>
 </html>

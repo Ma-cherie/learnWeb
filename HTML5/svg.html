@@ -31,7 +31,15 @@
         <!-- <polygon points='0 0,50 100,200,50'></polygon> -->
         <!-- <text x=400 y=100>Stronger</text> -->
         <!-- <path d="M 100 100 L 200 100 l 100 100"></path> -->
-        <path d="M 100 100 h 200 v 200 z"></path>
+        <!-- <path d="M 100 100 h 200 v 200 z"></path> -->
+        <defs>
+            <filter id="Gaussian_Blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" /> 数字越大越模糊
+            </filter>
+        </defs>
+        
+        <ellipse cx="200" cy="150" rx="70" ry="40" style="fill:#ff0000;stroke:#000000;
+        stroke-width:2;filter:url(#Gaussian_Blur)" />
     </svg>
 </body>
 </html>
