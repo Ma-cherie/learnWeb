@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webpack Cub</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="cube-box">
+            <div class="cube-outer">
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+            </div>
+            <div class="cube-inner">
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+                <div class="cube-face"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const outerCube = document.getElementsByClassName('cube-outer')[0];
+        const innerCube = document.getElementsByClassName('cube-inner')[0];
+        let rotateDeg = 0;
+        setInterval(() => {
+            outerCube.style.transform = `rotateY(${rotateDeg}deg)`;
+            innerCube.style.transform = `rotateY(-${rotateDeg}deg)`;
+            rotateDeg = rotateDeg + 90;
+            console.log(rotateDeg);
+        }, 2000);
+    </script>
+</body>
+</html>
