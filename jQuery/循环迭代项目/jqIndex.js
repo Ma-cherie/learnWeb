@@ -29,9 +29,9 @@ function bindEvent() {
         else{
             transferData('/api/student/addStudent',data,function (res) {
                 alert(res.msg);
-                $('#student-add-form')[0].reset();
-                $('[data-for=student-list]').click();
-                getTableData();
+                // $('#student-add-form')[0].reset();
+                // $('[data-for=student-list]').click();
+                // getTableData();
             })
         }
     })
@@ -102,7 +102,9 @@ function getTableData() {
     },function (res) {
         tableData = res.data.findByPage;
         pageNum = Math.ceil(res.data.cont / pageSize);
+        console.log(currentPage, pageNum,pageSize);
         renderTable(tableData);
+        renderTurnPage();
     })
 }
 
@@ -130,7 +132,14 @@ function renderTable(data) {
 
 // 渲染分页
 function renderTurnPage() {
-    
+    $('.turn-page-box').page({
+        curPage: currentPage,
+        totalPage: pageNum,
+        changeCb: function (page) {
+            currentPage = page;
+            getTableData();
+        }
+    })
 }
 
 
@@ -151,8 +160,8 @@ function renderEditForm(data) {
 function transferData(url, data, successCb) {
     // 提交数据
     const hostname = 'https://open.duyiedu.com';
-    // const appkey = 'Lazy_Bone_1569767870124';
-    const appkey = 'Dirty_1579775100154';
+    const appkey = 'Lazy_Bone_1569767870124';
+    // const appkey = 'Dirty_1579775100154';
     // 请求
     $.ajax({
         url: hostname + url,
