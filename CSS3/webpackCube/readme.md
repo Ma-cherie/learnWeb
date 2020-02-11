@@ -3,6 +3,6 @@
 前段时间刚好学了css3，就想着自己实现一个。
 
 # 注意点
-1. 下次cube-face可以尝试不变换transform-origin，这样cube-face旋转之后，不会位移。
+1. 下次cube-face可以尝试不变换transform-origin，这样cube-face旋转之后，不会位移整个魔方旋转角度后不会移动位置。
 
 2. rotate 顺时针是-deg，逆时针是+deg
