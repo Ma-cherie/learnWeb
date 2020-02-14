@@ -37,7 +37,7 @@
         url: 'https://api.github.com/users'
     });
     let user = users[0].login;
-    console.log(`https//api.github.com/users/${user}/repos`);
+    console.log(`https://api.github.com/users/${user}/repos`);
     // 请求user仓库
     console.log(repos);
 })()
