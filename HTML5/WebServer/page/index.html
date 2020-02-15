@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5 Api</title>
+</head>
+
+<body>
+    <!-- 地理位置 -->
+    <button id="btn">获取地理位置</button>
+    <script src="./getLocation.js"></script>
+    <!-- 陀螺仪 -->
+    <div id="box"></div>
+    <script>
+        // 陀螺仪，体感
+        // alpha: 指北（指南针）[0,360) 当0的时候指北。180指南
+        // beta: 平放时，beta为0。手机立起来（短边接触桌面），beta为90。
+        // gamma: 平放时候gamma为0.手机立起来（右侧翻 长边接触桌面），gamma为90.
+        window.addEventListener("deviceorientation",function (e) {
+            document.getElementById('box').innerHTML = `
+                <div>alpha: ${e.alpha}</div>
+                <div>beta: ${e.beta}</div>
+                <div>gamma: ${e.gamma}</div>
+            `
+        })
+
+
+    </script>
+</body>
+
+</html>
