@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性和侦听器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">{{ person }} {{ msg }}</div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                money: 1000000,
+                name: 'pzj',
+                msg: 'yeah'
+            },
+            methods: {
+                
+            },
+            computed: {
+                person() {
+                    console.log('excuted')
+                    return this.name + this.money;
+                }
+            }
+        })
+        app.$mount('#app');
+
+    </script>
+</body>
+
+</html>

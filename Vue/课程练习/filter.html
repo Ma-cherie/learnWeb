@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter 过滤器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ money }} {{name}}
+    </div>
+    <script>
+        Vue.filter('toMoney', (value) => {
+            return value.toLocaleString();
+        })
+        const app = new Vue({
+            data: {
+                money: 1000000,
+                name: 'pzj'
+            },
+            methods: {
+                
+            }
+        })
+        app.$mount('#app');
+
+
+
+    </script>
+</body>
+
+</html>

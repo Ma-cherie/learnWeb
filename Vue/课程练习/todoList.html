@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+            <input type="text" v-model.number="task" @keyup.13="handleKeyUp">
+            <button @click="handleClick">提交</button>
+            <div>正在添加的任务: {{ task }}</div>
+            <h5>所有任务</h5>
+            <ul>
+                <li v-for="(item,index) in taskList" :key="index" :_key="index">
+                    {{ item }}
+                    <button @click="delTask(index)" >删除</button>
+                </li>
+            </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            data:{
+                task: "",
+                taskList: []
+            },
+            methods:{
+                handleClick(){
+                    console.log(this.task)
+                    if (this.task) {
+                        this.taskList.push(this.task);
+                        this.task = "";
+                    }
+                },
+                handleKeyUp(e){
+                    this.handleClick();
+                },
+                delTask(index){
+                    this.taskList.splice(index,1);
+                }
+            }
+        })
+        app.$mount('#app');
+
+    </script>
+</body>
+</html>
