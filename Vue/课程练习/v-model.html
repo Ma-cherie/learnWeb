@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-input
+            :value="inputVal"
+            @input="handleInput"
+        ></my-input>
+    </div>
+
+    <template id="my-input">
+        <input type="text" @input="handle($event)" :value="value">
+    </template>
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data:{
+                inputVal: ''
+            },
+            methods:{
+                handleInput(value){
+                    this.inputVal = value;
+                }
+            },
+            components:{
+                myInput:{
+                    template: '#my-input',
+                    props:['value'],
+                    methods:{
+                        handle(e){
+                            // console.log(e.target.value)
+                            this.$emit('input', e.target.value)
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
