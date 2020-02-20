@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>导航守卫案例</h1>
+        <p>表单内有信息时，跳转页面会提示确认</p>
         <input type="text" v-model="inputVal">
     </div>
 </template>

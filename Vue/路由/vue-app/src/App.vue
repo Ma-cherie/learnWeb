@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
+      <router-link to="/about">权限验证</router-link> |
       <router-link to="/a">动态路由</router-link> |
       <router-link to="/b">导航守卫</router-link> |
       <router-link to="/c">嵌套路由</router-link> 

@@ -5,7 +5,6 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
-
 export default new Router({
   mode: 'history',
   routes: [
@@ -20,7 +19,10 @@ export default new Router({
     },
     {
       path: '/about',
-      component: () => import("./views/About.vue")
+      component: () => import("./views/About.vue"),
+      meta:{
+        needLogin: true
+      }
     },
     {
       path: '/a',
@@ -39,6 +41,9 @@ export default new Router({
       path: '/c',
       component: () => import("./views/C.vue"),
       redirect: '/c/c1',
+      meta: {
+        needLogin: true
+      },
       children:[
         {
           // path:'/c/c1',
@@ -54,6 +59,10 @@ export default new Router({
           component: () => import("./views/C3.vue")
         },
       ]
+    },
+    {
+      path:'/login',
+      component: () => import("./views/Login.vue")
     },
     {
       path: "/notfound",
