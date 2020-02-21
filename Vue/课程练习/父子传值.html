@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父子传值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>父亲：{{ msg }}</p>
+        <hr>
+        <son :msg="msg" @myfunc="handleFunc"></son>
+    </div>
+
+    <template id="son">
+        <div>
+            <p>儿子：{{ msg }}</p>
+            <button @click="handleClick">传值</button>
+        </div>
+    </template>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                msg: '父亲的msg'
+            },
+            methods:{
+                handleFunc(data){
+                    console.log('Yo', data)
+                    this.msg = data;
+                }
+            },
+            components: {
+                son: {
+                    template: '#son',
+                    data(){
+                        return {
+                            sonMsg: '儿子的msg'
+                        }
+                    },
+                    props: ['msg'],
+                    methods: {
+                        handleClick(){
+                            this.$emit('myfunc',this.sonMsg)
+                        }
+                    },
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
