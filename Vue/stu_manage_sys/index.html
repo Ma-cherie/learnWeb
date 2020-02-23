@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    <style>
+        .my-alert{
+            min-width: 280px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #edf2fc;
+            transition: opacity .3s,transform .4s,top .4s;
+            overflow: hidden;
+            padding: 15px 15px 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        @keyframes fadeIn {
+            from{
+                top: 0;
+                opacity: 0;
+            }
+            to{
+                top: 50px;
+                opacity: 1;
+            }
+        }
+        @keyframes fadeOut {
+            from{
+                top: 50px;
+                opacity: 1;
+            }
+            to{
+                top: 0px;
+                opacity: 0;
+            }
+        }
+        .fade-in{
+            animation: fadeIn .5s forwards;
+        }
+        .fade-out{
+            animation: fadeOut .5s forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn">click</button>
+    <template id="toast-tpl">
+        <div class="my-alert" :class="flag ? 'fade-in' : 'fade-out'"
+            v-if="show">
+            {{ msg }}
+        </div>
+    </template>
+    <script>
+        let btn = document.getElementById('btn');
+        btn.onclick = function () {
+            const app = new Vue({
+                // 这样写，最终就是替换这个create出来的div，而不是页面上的元素
+                el: document.createElement('div'),
+                template: `#toast-tpl`,
+                data(){
+                    return {
+                        msg: '一条信息',
+                        show: true, //控制显示
+                        flag: true, //控制动画
+                    }
+                }
+            })
+            document.body.appendChild(app.$el);
+            setTimeout(() => {
+                app.flag = false;
+            }, 1500);
+            setTimeout(() => {
+                app.show = false;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
