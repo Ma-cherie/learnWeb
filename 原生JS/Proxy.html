@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代理</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            a: 1,
+            b: 2
+        }
+        const objProxy = new Proxy(obj,{
+            get: (obj,prop) => {
+                console.log('do sth else');
+                return obj[prop];
+            },
+            set: (obj,prop,value) => {
+                console.log('do sth else');
+                obj[prop] = value;
+            }
+        })
+    </script>
+</body>
+</html>
