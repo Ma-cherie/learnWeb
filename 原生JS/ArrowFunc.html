@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+</head>
+<body>
+    <script>
+        function F() {
+            const f = () => {
+                console.log(this, arguments, new.target);
+            }
+            return f;
+        }
+        let f = F();
+        f();
+        
+    </script>
+</body>
+</html>
