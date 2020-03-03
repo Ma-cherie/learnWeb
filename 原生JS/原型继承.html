@@ -25,7 +25,7 @@ Parent.sayHello = function () {
 function Child(num,age) {
     // 相当于super
     // 子类构造器里调用父类构造器，继承父类的属性。
-    Parent.call(this,num);
+    // Parent.call(this,num);
     this.age = age;
 }
 Child.prototype.sayAge = function () {
@@ -39,27 +39,28 @@ Child.prototype.sayAge = function () {
     <script>
         // 寄生组合式继承
 // 子类构造函数的prototype的__proto__指向父类构造器的prototype，继承父类的方法。
-Child.prototype.__proto__ = Parent.prototype;
+Child.prototype = Object.create(Parent.prototype);
+// Child.prototype.__proto__ = Parent.prototype;
 // Child.prototype = new Parent();
 
 // Child.prototype.__proto__ = Parent.prototype;
 // 子类构造函数的__proto__指向父类构造器，继承父类的静态方法
 Child.__proto__ = Parent;
 // Child.prototype.constructor = Child;
-const parent = new Parent(1);
-console.log(parent.type);
-console.log(Parent.staticType);
-parent.sayNum();
-Parent.sayHello();
+// const parent = new Parent(1);
+// console.log(parent.type);
+// console.log(Parent.staticType);
+// parent.sayNum();
+// Parent.sayHello();
 
     console.log('-----------------------')
 
 const child = new Child(2,18);
-console.log(child.type);
-console.log(Child.staticType);
-child.sayNum();
+// console.log(child.type);
+// console.log(Child.staticType);
+// child.sayNum();
 // child.sayAge();
-Child.sayHello();
+// Child.sayHello();
 
 console.log(Parent.prototype.constructor)
 console.log(Child.prototype.constructor)

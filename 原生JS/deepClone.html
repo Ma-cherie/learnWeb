@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deepClone</title>
+</head>
+<body>
+    <script>
+        // 深层克隆
+        const person1 = {
+            age: 20,
+            game: ['王者荣耀', 'qq飞车', 'csgo'],
+            address: {
+                province: 'GuangDong',
+                city: 'GuangZhou'
+            },
+            // say(){
+            //     console.log('Hello')
+            // }
+        }
+        // 用JSON来进行克隆，遇到有函数则不行
+        // function deepClone(origin) {
+        //     return JSON.parse(JSON.stringify(origin));
+        // }
+
+        function getType(sth) {
+            return Object.prototype.toString.call(sth);
+        }
+
+        // 递归克隆
+        function deepClone(origin) {
+            let result;
+            if (getType(origin) == '[object Array]') {
+                result = [];
+            }
+            else if (getType(origin) == '[object Object]') {
+                result = {};
+            }
+            else{
+                return origin;
+            }
+            for (const key in origin) {
+                let value = origin[key];
+                if (value instanceof Array) {
+                    console.log('Array')
+                    result[key] = deepClone(value);
+                }
+                else if (value instanceof Object) {
+                    console.log('Object')
+                    result[key] = deepClone(value);
+                }else{
+                    console.log('other')
+                    result[key] = value;
+                }
+            }
+            return result;
+        }
+
+        const person2 = deepClone(person1);
+        person1.game.push('洛克王国')
+        console.log(person1);
+        console.log(person2);
+    </script>
+</body>
+</html>
