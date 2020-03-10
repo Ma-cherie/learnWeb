@@ -46,6 +46,27 @@ function postOrder(root) {
     console.log(root.value);
 }
 
+// 层序遍历
+function cengOrder(root) {
+    if (root == null) {
+        return;
+    }
+    function ceng(rootList) {
+        if (rootList == null || rootList.length == 0) return;
+        const childList = [];
+        for (let i = 0; i < rootList.length; i++) {
+            const root = rootList[i];
+            if (root != null) {
+                console.log(root.value);
+                root.left !== null ? childList.push(root.left) : '';
+                root.right !== null ? childList.push(root.right) : '';
+            }
+        }
+        ceng(childList)
+    }
+    ceng([root]);
+}
+
 // preOrder(a)
 // inOrder(a)
 // postOrder(a)
@@ -54,5 +75,18 @@ module.exports = {
     Node,
     preOrder,
     inOrder,
-    postOrder
+    postOrder,
+    cengOrder
 }
+
+
+const node1 = new Node(1);
+const node2 = new Node(2);
+const node3 = new Node(3);
+const node4 = new Node(4);
+const node5 = new Node(5);
+node1.left = node2;
+node1.right = node3;
+node2.left = node4;
+node2.right = node5;
+cengOrder(node1)
