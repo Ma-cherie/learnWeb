@@ -7,9 +7,10 @@ import Toast from './Tools/Toast'
 
 Vue.config.productionTip = false
 // 绑定自己api
-Vue.use(function (Vue) {
-  Vue.prototype.$api = api;
-})
+// Vue.use(function (Vue) {
+//   Vue.prototype.$api = api;
+// })
+Vue.prototype.$api = api;
 // 绑定消息弹框
 Vue.prototype.$Toast = Toast;
 
