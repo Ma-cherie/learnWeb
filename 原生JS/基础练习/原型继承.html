@@ -32,6 +32,11 @@ Child.prototype.sayAge = function () {
     console.log('age:' + this.age);
 }
 
+
+function inherit(Child,Parent) { // Child是子类、Parent是父类
+    Child.prototype.__proto__ = Parent.prototype; // Object.setPrototypeOf(Child.prototype,Parent.prototype);
+    Child.__proto__ = Parent; // Object.setPrototypeOf(Child,Parent);
+}
        
     </script>
 
@@ -62,8 +67,8 @@ const child = new Child(2,18);
 // child.sayAge();
 // Child.sayHello();
 
-console.log(Parent.prototype.constructor)
-console.log(Child.prototype.constructor)
+// console.log(Parent.prototype.constructor)
+// console.log(Child.prototype.constructor)
 
     </script>
 <!-- 
