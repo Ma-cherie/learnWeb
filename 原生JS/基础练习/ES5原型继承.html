@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5继承 原型</title>
+</head>
+
+<body>
+    <script>
+        // 继承对于JS来说就是父类拥有的属性和原型方法、静态方法等，子类也要拥有。
+        // 父类
+        // 原型、实例属性和方法
+        function Parent(num) {
+            this.num = num;
+        }
+        Parent.prototype.type = 'human';
+        Parent.prototype.sayNum = function () {
+            console.log('num:' + this.num);
+        }
+        // 静态属性和方法
+        Parent.staticType = 'staticHuman';
+        Parent.sayHello = function () {
+            console.log('Hello')
+        }
+
+        // 子类
+        function Child(num, age) {
+            // 相当于super 子类构造器里调用父类构造器，继承父类的属性。
+            Parent.call(this, num);
+            this.age = age;
+        }
+        Child.prototype.sayAge = function () {
+            console.log('age:' + this.age);
+        }
+
+        // 继承，Child是子类、Parent是父类
+        function inherit(Child, Parent) {
+            Child.prototype.__proto__ = Parent.prototype;  // 继承实例属性和方法
+            Child.__proto__ = Parent;  // 继承静态属性和方法
+        }
+        // 另一种写法
+        // function inherit(Child, Parent) {
+        //     Object.setPrototypeOf(Child.prototype,Parent.prototype);
+        //     Object.setPrototypeOf(Child,Parent);
+        // }
+
+        inherit(Child, Parent)
+
+
+        console.log('---------- Parent -------------')
+        const parent = new Parent(1);
+        console.log(parent.type);
+        parent.sayNum();
+
+        Parent.sayHello();
+        console.log(Parent.staticType);
+        // console.log(parent.constructor)
+
+        console.log('---------- Child -------------')
+        const child = new Child(2, 18);
+        console.log(child.type);
+        child.sayNum();
+        child.sayAge();
+
+        Child.sayHello();
+        console.log(Child.staticType);
+        // console.log(child.constructor)
+
+
+    </script>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

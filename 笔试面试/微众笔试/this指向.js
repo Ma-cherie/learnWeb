@@ -36,11 +36,11 @@ let obj = {
 const say = obj.say;
 const say2 = obj.embed.say;
 
-say();
-say2();
+say();   // undefined
+say2();  // undefined
 
-obj.say();
-obj.say2();
-obj.say3();
-obj.say4();
-obj.say5.call(helperObj);
+obj.say();   // lufy 
+obj.say2();  // undefined
+obj.say3();  // lufy
+obj.say4();  // undefined
+obj.say5.call(helperObj);  // one piece

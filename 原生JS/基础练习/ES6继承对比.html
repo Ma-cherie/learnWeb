@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 继承</title>
+</head>
+
+<body>
+    <script>
+
+        class Parent {
+            constructor(num) {
+                this.num = num;
+            }
+            // 实例属性、方法
+            type = 'human';
+            sayNum() {
+                console.log('num:' + this.num);
+            }
+            // 静态属性、方法
+            static staticType = 'staticHuman';
+            static sayHello = function () {
+                console.log('Hello')
+            }
+        }
+        class Child extends Parent {
+            constructor(num, age) {
+                super(num);
+                this.age = age;
+            }
+            sayAge() {
+                console.log('age:' + this.age);
+            }
+        }
+
+        console.log('---------- Parent -------------')
+        const parent = new Parent(1);
+        console.log('---------- Parent 实例 -------------')
+        console.log(parent.type);
+        parent.sayNum();
+         console.log('---------- Parent 静态 -------------')
+        Parent.sayHello();
+        console.log(Parent.staticType);
+        // console.log(parent.constructor)
+
+        console.log('---------- Child -------------')
+        const child = new Child(2, 18);
+        console.log('---------- Child 实例 -------------')
+        console.log(child.type);
+        child.sayNum();
+        child.sayAge();
+        console.log('---------- Child 静态 -------------')
+        Child.sayHello();
+        console.log(Child.staticType);
+        // console.log(child.constructor)
+
+    </script>
+</body>
+
+</html>
