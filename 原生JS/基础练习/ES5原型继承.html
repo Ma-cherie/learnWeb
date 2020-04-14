@@ -27,8 +27,8 @@
 
         // 子类
         function Child(num, age) {
-            // 相当于super 子类构造器里调用父类构造器，继承父类的属性。
-            Parent.call(this, num);
+            // 相当于super 子类构造器里调用父类构造器，继承父类实例的属性。
+            // Parent.call(this, num);
             this.age = age;
         }
         Child.prototype.sayAge = function () {
@@ -37,7 +37,7 @@
 
         // 继承，Child是子类、Parent是父类
         function inherit(Child, Parent) {
-            Child.prototype.__proto__ = Parent.prototype;  // 继承实例属性和方法
+            Child.prototype.__proto__ = Parent.prototype;  // 继承原型属性和方法
             Child.__proto__ = Parent;  // 继承静态属性和方法
         }
         // 另一种写法
@@ -73,8 +73,29 @@
 
 
     <script>
+        // function Father(name) {
+        //     this.name = name;
+        // }
+        // function Son(name, age) {
+        //     Father.call(this, name); // super
+        //     this.age = age;
+        // }
 
+        // function inherit(Son, Father) {
+        //     Son.prototype.__proto__ = Father.prototype; //继承了原型属性方法
+        //     Son.__proto__ = Father;  // 继承了静态的属性和方法
+        // }
 
+        function Father() {
+            
+        }
+        function Son() {
+            Father.call(this);
+        }
+        function inherit(Son, Father) {
+            Son.prototype = Object.create(Father.prototype); // {__proto__: Father.prototype}
+            Son.prototype.constructor = Son;
+        }
     </script>
 </body>
 
